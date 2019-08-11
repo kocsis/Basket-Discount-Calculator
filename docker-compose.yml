@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  slim:
+    build: .
+    container_name: slim_backend
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/var/www/html
+  composer:
+    image: composer/composer:latest
+    container_name: composer
+    restart: 'no'
+    volumes:
+      - ./app:/app
+    command: install
